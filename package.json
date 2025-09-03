@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "prebuild": "tsc --build",
-    "build": "ncc build src/index.ts --minify  --target es2022 --v8-cache",
+    "build": "ncc build src/index.ts --minify --target es2024 --v8-cache",
     "prettier": "prettier --ignore-path .gitignore \"./**/*.{cjs,js,json,md,ts,yml}\"",
     "xo": "xo"
   },
@@ -22,8 +22,8 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@octokit/webhooks-types": "^7.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/error-cause": "^1.0.1",
     "@types/lodash-es": "^4.17.8",
     "@types/node": "^20.4.5",
