@@ -16,6 +16,14 @@ inputs:
   github_token:
     description: Token for the GitHub API.
     required: true
+  user_name:
+    description: >
+      User name for backport commit.
+    default: "github-actions[bot]"
+  user_email:
+    description: >
+      User email for backport commit.
+    default: "github-actions[bot]@users.noreply.github.com"
   head_template:
     description: >
       Lodash template for the backport PR's head branch.
