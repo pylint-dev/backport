@@ -33,6 +33,8 @@ const run = async () => {
     const labelRegExp = new RegExp(labelPattern);
 
     const token = getInput("github_token", { required: true });
+    const userName = getInput("user_name", { required: true });
+    const userEmail = getInput("user_email", { required: true });
 
     if (!context.payload.pull_request) {
       throw new Error(`Unsupported event action: ${context.payload.action}.`);
@@ -54,6 +56,8 @@ const run = async () => {
       labelRegExp,
       payload,
       token,
+      userEmail,
+      userName,
     });
     setOutput(
       "created_pull_requests",

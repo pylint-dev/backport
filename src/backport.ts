@@ -185,6 +185,8 @@ const backport = async ({
   labelRegExp,
   payload,
   token,
+  userEmail,
+  userName,
 }: {
   getBody: (
     props: Readonly<{
@@ -216,6 +218,8 @@ const backport = async ({
   labelRegExp: RegExp;
   payload: PullRequestClosedEvent | PullRequestLabeledEvent;
   token: string;
+  userEmail: string;
+  userName: string;
 }): Promise<{ [base: string]: number }> => {
   const {
     pull_request: {
@@ -257,13 +261,8 @@ const backport = async ({
   cloneUrl.password = token;
 
   await exec("git", ["clone", cloneUrl.toString()]);
-  await exec("git", [
-    "config",
-    "--global",
-    "user.email",
-    "github-actions[bot]@users.noreply.github.com",
-  ]);
-  await exec("git", ["config", "--global", "user.name", "github-actions[bot]"]);
+  await exec("git", ["config", "--global", "user.email", userEmail]);
+  await exec("git", ["config", "--global", "user.name", userName]);
 
   const createdPullRequestBaseBranchToNumber: { [base: string]: number } = {};
 
