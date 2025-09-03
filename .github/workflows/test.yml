@@ -9,7 +9,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - run: yarn install --frozen-lockfile
       - run: yarn run yarn-deduplicate --strategy fewer --fail
       - run: yarn run build
