@@ -1,7 +1,7 @@
 import { group, info, error as logError, warning } from "@actions/core";
 import { exec } from "@actions/exec";
 import { getOctokit } from "@actions/github";
-import type { GitHub } from "@actions/github/lib/utils.js";
+import type { GitHub } from "@actions/github/lib/utils";
 import type {
   PullRequestClosedEvent,
   PullRequestLabeledEvent,
