@@ -1,17 +1,17 @@
 "use strict";
 
+/* eslint-disable import-x/no-extraneous-dependencies */
+const { FlatCompat } = require("@eslint/eslintrc");
+const js = require("@eslint/js");
 const { defineConfig } = require("eslint/config");
-
 const sortDestructureKeys = require("eslint-plugin-sort-destructure-keys");
 const typescriptSortKeys = require("eslint-plugin-typescript-sort-keys");
-const js = require("@eslint/js");
-
-const { FlatCompat } = require("@eslint/eslintrc");
+/* eslint-enable import-x/no-extraneous-dependencies */
 
 const compat = new FlatCompat({
+  allConfig: js.configs.all,
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
 });
 
 module.exports = defineConfig([
