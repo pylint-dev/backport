@@ -1,28 +1,15 @@
-"use strict";
+import js from "@eslint/js";
+import { defineConfig } from "eslint/config";
+import sortDestructureKeys from "eslint-plugin-sort-destructure-keys";
 
-/* eslint-disable import-x/no-extraneous-dependencies */
-const { FlatCompat } = require("@eslint/eslintrc");
-const js = require("@eslint/js");
-const { defineConfig } = require("eslint/config");
-const sortDestructureKeys = require("eslint-plugin-sort-destructure-keys");
-const typescriptSortKeys = require("eslint-plugin-typescript-sort-keys");
-/* eslint-enable import-x/no-extraneous-dependencies */
-
-const compat = new FlatCompat({
-  allConfig: js.configs.all,
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
-
-module.exports = defineConfig([
+export default defineConfig(
   {
-    extends: compat.extends("prettier"),
-
+    extends: ["js/recommended"],
     plugins: {
+      js,
       "sort-destructure-keys": sortDestructureKeys,
-      "typescript-sort-keys": typescriptSortKeys,
     },
-
+    prettier: "compat",
     rules: {
       "@typescript-eslint/naming-convention": "off",
 
@@ -93,9 +80,6 @@ module.exports = defineConfig([
           natural: true,
         },
       ],
-
-      "typescript-sort-keys/interface": "error",
-      "typescript-sort-keys/string-enum": "error",
     },
   },
   {
@@ -110,4 +94,13 @@ module.exports = defineConfig([
       "default-case": "off",
     },
   },
-]);
+  {
+    files: ["**/xo.config.js"],
+
+    rules: {
+      "import-x/no-default-export": "off",
+      "import-x/no-extraneous-dependencies": "off",
+      "n/no-extraneous-import": "off",
+    },
+  },
+);
