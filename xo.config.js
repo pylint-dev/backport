@@ -1,7 +1,6 @@
 import js from "@eslint/js";
 import { defineConfig } from "eslint/config";
 import sortDestructureKeys from "eslint-plugin-sort-destructure-keys";
-import typescriptSortKeys from "eslint-plugin-typescript-sort-keys";
 
 export default defineConfig(
   {
@@ -9,7 +8,6 @@ export default defineConfig(
     plugins: {
       js,
       "sort-destructure-keys": sortDestructureKeys,
-      "typescript-sort-keys": typescriptSortKeys,
     },
     prettier: "compat",
     rules: {
@@ -82,9 +80,6 @@ export default defineConfig(
           natural: true,
         },
       ],
-
-      "typescript-sort-keys/interface": "error",
-      "typescript-sort-keys/string-enum": "error",
     },
   },
   {
