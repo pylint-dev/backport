@@ -189,6 +189,7 @@ const backport = async ({
   userName,
 }: {
   getBody: (
+    // eslint-disable-next-line no-unused-vars
     props: Readonly<{
       base: string;
       body: string;
@@ -197,18 +198,21 @@ const backport = async ({
     }>,
   ) => string;
   getHead: (
+    // eslint-disable-next-line no-unused-vars
     props: Readonly<{
       base: string;
       number: number;
     }>,
   ) => string;
   getLabels: (
+    // eslint-disable-next-line no-unused-vars
     props: Readonly<{
       base: string;
       labels: readonly string[];
     }>,
   ) => string[];
   getTitle: (
+    // eslint-disable-next-line no-unused-vars
     props: Readonly<{
       base: string;
       number: number;

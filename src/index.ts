@@ -20,16 +20,19 @@ const run = async () => {
     }: Readonly<{ base: string; labels: readonly string[] }>): string[] => {
       const json = _getLabels({ base, labels });
       try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         return JSON.parse(json) as string[];
       } catch (_error: unknown) {
         const error = ensureError(_error);
         throw new Error(`Could not parse labels from invalid JSON: ${json}.`, {
+          // eslint-disable-next-line preserve-caught-error
           cause: error,
         });
       }
     };
 
     const labelPattern = getInput("label_pattern");
+    // eslint-disable-next-line require-unicode-regexp
     const labelRegExp = new RegExp(labelPattern);
 
     const token = getInput("github_token", { required: true });
@@ -40,6 +43,7 @@ const run = async () => {
       throw new Error(`Unsupported event action: ${context.payload.action}.`);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
     const payload = context.payload as PullRequestEvent;
 
     if (payload.action !== "closed" && payload.action !== "labeled") {
